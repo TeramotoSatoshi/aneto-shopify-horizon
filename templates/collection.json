@@ -203,12 +203,21 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "custom_liquid_X7jzXp": {
+              "type": "custom-liquid",
+              "name": "t:names.custom_liquid",
+              "settings": {
+                "custom_liquid": ""
+              },
+              "blocks": {}
             }
           },
           "block_order": [
             "card-gallery",
             "product_title_4nY4eT",
-            "price_EzJzMm"
+            "price_EzJzMm",
+            "custom_liquid_X7jzXp"
           ]
         }
       },
