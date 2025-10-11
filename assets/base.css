@@ -4283,13 +4283,3 @@ text-component {
     font-size: max(1rem, 100%);
   }
 }
-
-.header-transparent {
-  background-color: transparent !important;
-  transition: background-color 0.3s ease;
-}
-
-.header-scrolled {
-  background-color: var(--color-background) !important;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
