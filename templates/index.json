@@ -16,7 +16,7 @@
           "type": "button",
           "name": "t:names.button",
           "settings": {
-            "label": "今すぐ購入",
+            "label": "ALL ITEM",
             "link": "shopify://collections/all",
             "open_in_new_tab": false,
             "style_class": "button-secondary",
