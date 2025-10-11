@@ -462,15 +462,6 @@
         </svg>
       </button>
 
-      <div class="ai-slideshow-dots-{{ ai_gen_id }}">
-        {% for i in (1..slide_count) %}
-          <button
-            class="ai-slideshow-dot-{{ ai_gen_id }}{% if forloop.first %} active{% endif %}"
-            data-slide-index="{{ forloop.index0 }}"
-            aria-label="Go to slide {{ forloop.index }}"
-          ></button>
-        {% endfor %}
-      </div>
     {% endif %}
   </div>
 </slideshow-component-{{ ai_gen_id }}>
