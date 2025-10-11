@@ -1,6 +1,531 @@
+{% doc %}
+  @prompt
+    Create a custom CSS block that sets the slideshow section height to 100vh (full viewport height). The CSS should target the slideshow section and ensure it takes up the full height of the screen., 通常のスライダーセクションと同様のプロパティを設けてください
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-custom-css-{{ ai_gen_id }} {
+    display: none;
+  }
+
+  {% if block.settings.target_selector == 'slideshow' %}
+    .slideshow {
+      height: {{ block.settings.desktop_height }}vh !important;
+      min-height: {{ block.settings.desktop_height }}vh !important;
+      {% if block.settings.enable_autoplay %}
+        --slideshow-autoplay-duration: {{ block.settings.autoplay_duration }}s;
+      {% endif %}
+    }
+    
+    .slideshow .slideshow__media {
+      height: {{ block.settings.desktop_height }}vh !important;
+      object-fit: {{ block.settings.image_behavior }};
+    }
+    
+    .slideshow .slideshow__slide {
+      height: {{ block.settings.desktop_height }}vh !important;
+    }
+    
+    .slideshow .slideshow__text-wrapper {
+      height: {{ block.settings.desktop_height }}vh !important;
+      display: flex;
+      align-items: {{ block.settings.content_alignment_vertical }};
+      justify-content: {{ block.settings.content_alignment_horizontal }};
+      text-align: {{ block.settings.text_alignment }};
+    }
+
+    {% if block.settings.show_text_box %}
+      .slideshow .slideshow__text {
+        background-color: {{ block.settings.text_box_color }};
+        padding: {{ block.settings.text_box_padding }}px;
+        border-radius: {{ block.settings.text_box_border_radius }}px;
+        {% if block.settings.text_box_opacity < 100 %}
+          opacity: {{ block.settings.text_box_opacity | divided_by: 100.0 }};
+        {% endif %}
+      }
+    {% endif %}
+
+    {% if block.settings.overlay_enabled %}
+      .slideshow .slideshow__slide::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: {{ block.settings.overlay_color }};
+        opacity: {{ block.settings.overlay_opacity | divided_by: 100.0 }};
+        z-index: 1;
+      }
+      
+      .slideshow .slideshow__text-wrapper {
+        position: relative;
+        z-index: 2;
+      }
+    {% endif %}
+
+    {% unless block.settings.show_navigation_dots %}
+      .slideshow .slideshow__controls .slider-buttons {
+        display: none !important;
+      }
+    {% endunless %}
+
+    {% unless block.settings.show_navigation_arrows %}
+      .slideshow .slideshow__controls .slider-button {
+        display: none !important;
+      }
+    {% endunless %}
+
+  {% elsif block.settings.target_selector == 'custom' and block.settings.custom_selector != blank %}
+    {{ block.settings.custom_selector }} {
+      height: {{ block.settings.desktop_height }}vh !important;
+      min-height: {{ block.settings.desktop_height }}vh !important;
+    }
+  {% endif %}
+
+  {% if block.settings.additional_css != blank %}
+    {{ block.settings.additional_css }}
+  {% endif %}
+
+  @media screen and (max-width: 749px) {
+    {% if block.settings.target_selector == 'slideshow' %}
+      .slideshow {
+        height: {{ block.settings.mobile_height }}vh !important;
+        min-height: {{ block.settings.mobile_height }}vh !important;
+      }
+      
+      .slideshow .slideshow__media {
+        height: {{ block.settings.mobile_height }}vh !important;
+        object-fit: {{ block.settings.mobile_image_behavior }};
+      }
+      
+      .slideshow .slideshow__slide {
+        height: {{ block.settings.mobile_height }}vh !important;
+      }
+      
+      .slideshow .slideshow__text-wrapper {
+        height: {{ block.settings.mobile_height }}vh !important;
+        align-items: {{ block.settings.mobile_content_alignment_vertical }};
+        justify-content: {{ block.settings.mobile_content_alignment_horizontal }};
+        text-align: {{ block.settings.mobile_text_alignment }};
+      }
+
+      {% if block.settings.show_text_box %}
+        .slideshow .slideshow__text {
+          padding: {{ block.settings.mobile_text_box_padding }}px;
+        }
+      {% endif %}
+
+    {% elsif block.settings.target_selector == 'custom' and block.settings.custom_selector != blank %}
+      {{ block.settings.custom_selector }} {
+        height: {{ block.settings.mobile_height }}vh !important;
+        min-height: {{ block.settings.mobile_height }}vh !important;
+      }
+    {% endif %}
+  }
+{% endstyle %}
+
+<div class="ai-custom-css-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  {% if block.settings.show_preview %}
+    <div style="
+      padding: 20px;
+      background-color: #f5f5f5;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      text-align: center;
+      color: #666;
+      font-size: 14px;
+    ">
+      <strong>スライドショー用カスタムCSS有効</strong><br>
+      {% if block.settings.target_selector == 'slideshow' %}
+        対象: スライドショーセクション ({{ block.settings.desktop_height }}vh)
+      {% elsif block.settings.target_selector == 'custom' and block.settings.custom_selector != blank %}
+        対象: {{ block.settings.custom_selector }} ({{ block.settings.desktop_height }}vh)
+      {% else %}
+        対象が選択されていません
+      {% endif %}
+      <br>モバイル高さ: {{ block.settings.mobile_height }}vh
+      {% if block.settings.overlay_enabled %}
+        <br>オーバーレイ: 有効 ({{ block.settings.overlay_opacity }}%)
+      {% endif %}
+    </div>
+  {% endif %}
+</div>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "スライドショー用カスタムCSS",
+  "settings": [
+    {
+      "type": "header",
+      "content": "対象セレクター"
+    },
+    {
+      "type": "select",
+      "id": "target_selector",
+      "label": "対象要素",
+      "options": [
+        {
+          "value": "slideshow",
+          "label": "スライドショーセクション"
+        },
+        {
+          "value": "custom",
+          "label": "カスタムセレクター"
+        }
+      ],
+      "default": "slideshow"
+    },
+    {
+      "type": "text",
+      "id": "custom_selector",
+      "label": "カスタムCSSセレクター",
+      "placeholder": ".my-section, #hero-banner",
+      "info": "特定の要素をターゲットにするCSSセレクターを入力"
+    },
+    {
+      "type": "header",
+      "content": "高さ設定"
+    },
+    {
+      "type": "range",
+      "id": "desktop_height",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "vh",
+      "label": "デスクトップ高さ",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "mobile_height",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "vh",
+      "label": "モバイル高さ",
+      "default": 70
+    },
+    {
+      "type": "header",
+      "content": "画像設定"
+    },
+    {
+      "type": "select",
+      "id": "image_behavior",
+      "label": "デスクトップ画像の表示方法",
+      "options": [
+        {
+          "value": "cover",
+          "label": "カバー（画面全体を覆う）"
+        },
+        {
+          "value": "contain",
+          "label": "コンテイン（画像全体を表示）"
+        },
+        {
+          "value": "fill",
+          "label": "フィル（引き伸ばし）"
+        }
+      ],
+      "default": "cover"
+    },
+    {
+      "type": "select",
+      "id": "mobile_image_behavior",
+      "label": "モバイル画像の表示方法",
+      "options": [
+        {
+          "value": "cover",
+          "label": "カバー（画面全体を覆う）"
+        },
+        {
+          "value": "contain",
+          "label": "コンテイン（画像全体を表示）"
+        },
+        {
+          "value": "fill",
+          "label": "フィル（引き伸ばし）"
+        }
+      ],
+      "default": "cover"
+    },
+    {
+      "type": "header",
+      "content": "オーバーレイ"
+    },
+    {
+      "type": "checkbox",
+      "id": "overlay_enabled",
+      "label": "オーバーレイを有効にする",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "オーバーレイ色",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "%",
+      "label": "オーバーレイ透明度",
+      "default": 30
+    },
+    {
+      "type": "header",
+      "content": "コンテンツ配置（デスクトップ）"
+    },
+    {
+      "type": "select",
+      "id": "content_alignment_vertical",
+      "label": "縦方向の配置",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "上"
+        },
+        {
+          "value": "center",
+          "label": "中央"
+        },
+        {
+          "value": "flex-end",
+          "label": "下"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "content_alignment_horizontal",
+      "label": "横方向の配置",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "左"
+        },
+        {
+          "value": "center",
+          "label": "中央"
+        },
+        {
+          "value": "flex-end",
+          "label": "右"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "テキスト配置",
+      "options": [
+        {
+          "value": "left",
+          "label": "左揃え"
+        },
+        {
+          "value": "center",
+          "label": "中央揃え"
+        },
+        {
+          "value": "right",
+          "label": "右揃え"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "コンテンツ配置（モバイル）"
+    },
+    {
+      "type": "select",
+      "id": "mobile_content_alignment_vertical",
+      "label": "縦方向の配置",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "上"
+        },
+        {
+          "value": "center",
+          "label": "中央"
+        },
+        {
+          "value": "flex-end",
+          "label": "下"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "mobile_content_alignment_horizontal",
+      "label": "横方向の配置",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "左"
+        },
+        {
+          "value": "center",
+          "label": "中央"
+        },
+        {
+          "value": "flex-end",
+          "label": "右"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "mobile_text_alignment",
+      "label": "テキスト配置",
+      "options": [
+        {
+          "value": "left",
+          "label": "左揃え"
+        },
+        {
+          "value": "center",
+          "label": "中央揃え"
+        },
+        {
+          "value": "right",
+          "label": "右揃え"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "テキストボックス"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_text_box",
+      "label": "テキストボックスを表示",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "text_box_color",
+      "label": "テキストボックス背景色",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "text_box_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "テキストボックス透明度",
+      "default": 90
+    },
+    {
+      "type": "range",
+      "id": "text_box_padding",
+      "min": 10,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "テキストボックス余白",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "mobile_text_box_padding",
+      "min": 10,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "label": "モバイルテキストボックス余白",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "text_box_border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "テキストボックス角丸",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "ナビゲーション"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_navigation_arrows",
+      "label": "矢印ナビゲーションを表示",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_navigation_dots",
+      "label": "ドットナビゲーションを表示",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "自動再生"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_autoplay",
+      "label": "自動再生を有効にする",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "autoplay_duration",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "unit": "秒",
+      "label": "自動再生間隔",
+      "default": 5
+    },
+    {
+      "type": "header",
+      "content": "追加CSS"
+    },
+    {
+      "type": "textarea",
+      "id": "additional_css",
+      "label": "追加CSS",
+      "placeholder": ".my-class { color: red; }",
+      "info": "追加のCSSルールをここに記述"
+    },
+    {
+      "type": "header",
+      "content": "プレビュー"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_preview",
+      "label": "プレビューボックスを表示",
+      "default": true,
+      "info": "ブロックが有効であることを確認するプレビューボックスを表示"
+    }
+  ],
+  "presets": [
+    {
+      "name": "スライドショー用カスタムCSS"
+    }
+  ],
+  "tag": null
+}
 {% endschema %}
