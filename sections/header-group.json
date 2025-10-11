@@ -81,7 +81,8 @@
         }
       },
       "custom_css": [
-        ".cart-count-bubble {background-color: #000000 !important;}"
+        ".cart-count-bubble {background-color: #000000 !important;}",
+        "。cart-bubble {background-color: #000000 !important;}"
       ],
       "settings": {
         "logo_position": "center",
