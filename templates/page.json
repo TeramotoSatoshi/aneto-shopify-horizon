@@ -28,7 +28,7 @@
             "align_baseline": false,
             "horizontal_alignment_flex_direction_column": "flex-start",
             "vertical_alignment_flex_direction_column": "center",
-            "gap": 12,
+            "gap": 20,
             "width": "fill",
             "custom_width": 100,
             "width_mobile": "fill",
@@ -84,7 +84,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h4>From Range to Town</h4><h6>自然の厳しさを凌ぐ機能が<br/>日常と山脈をシームレスに繋ぐ</h6>",
+                "text": "<h3>From Range to Town</h3><h5>自然の厳しさを凌ぐ機能が<br/>日常と山脈をシームレスに繋ぐ</h5>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
