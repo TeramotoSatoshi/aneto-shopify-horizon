@@ -118,7 +118,7 @@
                 "style_class": "button-unstyled",
                 "display_type": "arrow",
                 "label": "サインアップ",
-                "integrated_button": false,
+                "integrated_button": true,
                 "button_type_preset": "h5",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
