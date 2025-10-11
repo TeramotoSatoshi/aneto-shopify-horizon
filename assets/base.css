@@ -4289,14 +4289,7 @@ text-component {
   transition: background-color 0.3s ease;
 }
 
-/* スクロール後のヘッダー（背景色あり） */
 .header-scrolled {
   background-color: var(--color-background) !important;
-  /* または具体的な色: background-color: #ffffff; */
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-/* 透過クラスが外れた状態 */
-.header:not(.header-transparent) {
-  background-color: var(--color-background);
 }
