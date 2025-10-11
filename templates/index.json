@@ -384,27 +384,11 @@
                 "custom_width_mobile": 100
               },
               "blocks": {}
-            },
-            "button_nekDLL": {
-              "type": "button",
-              "name": "t:names.button",
-              "settings": {
-                "label": "VIEW ALL",
-                "link": "shopify://collections/all-product-1",
-                "open_in_new_tab": false,
-                "style_class": "button-secondary",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
             }
           },
           "block_order": [
             "product_list_text_VxQgCJ",
-            "product_list_button_ymAMdF",
-            "button_nekDLL"
+            "product_list_button_ymAMdF"
           ]
         },
         "static-product-card": {
@@ -497,9 +481,9 @@
           ]
         }
       },
-      "name": "NEW ARRIVALS",
+      "name": "新着アイテム",
       "settings": {
-        "collection": "all",
+        "collection": "all-product-1",
         "layout_type": "grid",
         "carousel_on_mobile": false,
         "max_products": 4,
@@ -691,7 +675,7 @@
           ]
         }
       },
-      "name": "SALE ITEMS",
+      "name": "全てのアイテム",
       "settings": {
         "collection": "all",
         "layout_type": "grid",
