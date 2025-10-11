@@ -1,6 +1,335 @@
+{% doc %}
+  @prompt
+    Create a circular text layout block where text is arranged in a circle or curved path. The block should allow merchants to customize the text content and styling.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-circular-text-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: {{ block.settings.container_padding }}px;
+    background-color: {{ block.settings.background_color }};
+    min-height: {{ block.settings.circle_size }}px;
+  }
+
+  .ai-circular-text-container-{{ ai_gen_id }} {
+    position: relative;
+    width: {{ block.settings.circle_size }}px;
+    height: {{ block.settings.circle_size }}px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .ai-circular-text-svg-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate({{ block.settings.rotation_offset }}deg);
+  }
+
+  .ai-circular-text-path-{{ ai_gen_id }} {
+    fill: none;
+    stroke: none;
+  }
+
+  .ai-circular-text-text-{{ ai_gen_id }} {
+    font-family: {{ block.settings.text_font.family }}, {{ block.settings.text_font.fallback_families }};
+    font-weight: {{ block.settings.text_font.weight }};
+    font-size: {{ block.settings.font_size }}px;
+    fill: {{ block.settings.text_color }};
+    letter-spacing: {{ block.settings.letter_spacing }}px;
+    text-transform: {% if block.settings.text_uppercase %}uppercase{% else %}none{% endif %};
+  }
+
+  .ai-circular-text-center-content-{{ ai_gen_id }} {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: {{ block.settings.circle_size | times: 0.6 }}px;
+  }
+
+  .ai-circular-text-center-title-{{ ai_gen_id }} {
+    font-family: {{ block.settings.center_font.family }}, {{ block.settings.center_font.fallback_families }};
+    font-weight: {{ block.settings.center_font.weight }};
+    font-size: {{ block.settings.center_font_size }}px;
+    color: {{ block.settings.center_text_color }};
+    margin: 0 0 8px 0;
+    line-height: 1.2;
+  }
+
+  .ai-circular-text-center-description-{{ ai_gen_id }} {
+    font-size: {{ block.settings.center_description_size }}px;
+    color: {{ block.settings.center_description_color }};
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-circular-text-container-{{ ai_gen_id }} {
+      width: {{ block.settings.circle_size | times: 0.8 }}px;
+      height: {{ block.settings.circle_size | times: 0.8 }}px;
+    }
+
+    .ai-circular-text-text-{{ ai_gen_id }} {
+      font-size: {{ block.settings.font_size | times: 0.8 }}px;
+    }
+
+    .ai-circular-text-center-title-{{ ai_gen_id }} {
+      font-size: {{ block.settings.center_font_size | times: 0.8 }}px;
+    }
+
+    .ai-circular-text-center-description-{{ ai_gen_id }} {
+      font-size: {{ block.settings.center_description_size | times: 0.8 }}px;
+    }
+
+    .ai-circular-text-center-content-{{ ai_gen_id }} {
+      max-width: {{ block.settings.circle_size | times: 0.8 | times: 0.6 }}px;
+    }
+  }
+{% endstyle %}
+
+<circular-text-{{ ai_gen_id }}
+  class="ai-circular-text-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-circular-text-container-{{ ai_gen_id }}">
+    {% if block.settings.circular_text != blank %}
+      <svg class="ai-circular-text-svg-{{ ai_gen_id }}" viewBox="0 0 {{ block.settings.circle_size }} {{ block.settings.circle_size }}">
+        <defs>
+          <path
+            id="ai-circular-path-{{ ai_gen_id }}"
+            class="ai-circular-text-path-{{ ai_gen_id }}"
+            d="M {{ block.settings.circle_size | divided_by: 2 }}, {{ block.settings.circle_size | divided_by: 2 }} 
+               m -{{ block.settings.circle_size | divided_by: 2 | minus: 20 }}, 0 
+               a {{ block.settings.circle_size | divided_by: 2 | minus: 20 }},{{ block.settings.circle_size | divided_by: 2 | minus: 20 }} 0 1,1 {{ block.settings.circle_size | minus: 40 }},0 
+               a {{ block.settings.circle_size | divided_by: 2 | minus: 20 }},{{ block.settings.circle_size | divided_by: 2 | minus: 20 }} 0 1,1 -{{ block.settings.circle_size | minus: 40 }},0"
+          />
+        </defs>
+        <text class="ai-circular-text-text-{{ ai_gen_id }}">
+          <textPath href="#ai-circular-path-{{ ai_gen_id }}" startOffset="{{ block.settings.text_start_offset }}%">
+            {{ block.settings.circular_text }}
+          </textPath>
+        </text>
+      </svg>
+    {% endif %}
+
+    {% if block.settings.center_title != blank or block.settings.center_description != blank %}
+      <div class="ai-circular-text-center-content-{{ ai_gen_id }}">
+        {% if block.settings.center_title != blank %}
+          <h3 class="ai-circular-text-center-title-{{ ai_gen_id }}">{{ block.settings.center_title }}</h3>
+        {% endif %}
+        {% if block.settings.center_description != blank %}
+          <p class="ai-circular-text-center-description-{{ ai_gen_id }}">{{ block.settings.center_description }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</circular-text-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class CircularText{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.adjustTextSpacing();
+        window.addEventListener('resize', () => this.adjustTextSpacing());
+      }
+
+      adjustTextSpacing() {
+        const textElement = this.querySelector('.ai-circular-text-text-{{ ai_gen_id }}');
+        const pathElement = this.querySelector('#ai-circular-path-{{ ai_gen_id }}');
+        
+        if (!textElement || !pathElement) return;
+
+        const textLength = textElement.getComputedTextLength();
+        const pathLength = pathElement.getTotalLength();
+        
+        if (textLength > pathLength * 0.9) {
+          const currentFontSize = parseFloat(getComputedStyle(textElement).fontSize);
+          const newFontSize = currentFontSize * 0.9;
+          textElement.style.fontSize = newFontSize + 'px';
+        }
+      }
+    }
+
+    customElements.define('circular-text-{{ ai_gen_id }}', CircularText{{ ai_gen_id }});
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Circular text layout",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Circular text"
+    },
+    {
+      "type": "text",
+      "id": "circular_text",
+      "label": "Circular text",
+      "default": "PREMIUM QUALITY • SUSTAINABLE DESIGN • PREMIUM QUALITY • SUSTAINABLE DESIGN • "
+    },
+    {
+      "type": "font_picker",
+      "id": "text_font",
+      "label": "Font",
+      "default": "figtree_n5"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 8,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "letter_spacing",
+      "min": 0,
+      "max": 10,
+      "step": 0.5,
+      "unit": "px",
+      "label": "Letter spacing",
+      "default": 1
+    },
+    {
+      "type": "checkbox",
+      "id": "text_uppercase",
+      "label": "Uppercase text",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "text_start_offset",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Text start position",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Circle settings"
+    },
+    {
+      "type": "range",
+      "id": "circle_size",
+      "min": 200,
+      "max": 600,
+      "step": 20,
+      "unit": "px",
+      "label": "Circle size",
+      "default": 300
+    },
+    {
+      "type": "range",
+      "id": "rotation_offset",
+      "min": 0,
+      "max": 360,
+      "step": 5,
+      "unit": "deg",
+      "label": "Rotation offset",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Center content"
+    },
+    {
+      "type": "text",
+      "id": "center_title",
+      "label": "Center title",
+      "default": "ANETO"
+    },
+    {
+      "type": "font_picker",
+      "id": "center_font",
+      "label": "Center font",
+      "default": "figtree_n5"
+    },
+    {
+      "type": "range",
+      "id": "center_font_size",
+      "min": 12,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "label": "Center title size",
+      "default": 24
+    },
+    {
+      "type": "color",
+      "id": "center_text_color",
+      "label": "Center title color",
+      "default": "#000000"
+    },
+    {
+      "type": "textarea",
+      "id": "center_description",
+      "label": "Center description",
+      "default": "Crafted with precision"
+    },
+    {
+      "type": "range",
+      "id": "center_description_size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Description size",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "center_description_color",
+      "label": "Description color",
+      "default": "#666666"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "container_padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Container padding",
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "Circular text layout"
+    }
+  ]
+}
 {% endschema %}
