@@ -397,17 +397,17 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "product_list_text_VxQgCJ": {
-              "type": "_product-list-text",
-              "name": "t:names.collection_title",
+            "text_mWRXbV": {
+              "type": "text",
+              "name": "t:names.heading",
               "settings": {
-                "text": "<h1>2025 S/S NEW ARRIVALS</h1>",
+                "text": "<h2>2025 S/S NEW ARRIVALS</h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
-                "type_preset": "h4",
+                "type_preset": "rte",
                 "font": "var(--font-body--family)",
-                "font_size": "",
+                "font_size": "1rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
@@ -439,7 +439,7 @@
             }
           },
           "block_order": [
-            "product_list_text_VxQgCJ",
+            "text_mWRXbV",
             "product_list_button_ymAMdF"
           ]
         },
@@ -591,17 +591,17 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "product_list_text_YFtzcL": {
-              "type": "_product-list-text",
-              "name": "t:names.collection_title",
+            "text_AkT7wF": {
+              "type": "text",
+              "name": "t:names.heading",
               "settings": {
-                "text": "<h2>ALL ITEM</h2>",
+                "text": "<h2>ALL ITEMS</h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
-                "type_preset": "h4",
+                "type_preset": "rte",
                 "font": "var(--font-body--family)",
-                "font_size": "",
+                "font_size": "1rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
@@ -633,7 +633,7 @@
             }
           },
           "block_order": [
-            "product_list_text_YFtzcL",
+            "text_AkT7wF",
             "product_list_button_MWeP9V"
           ]
         },
