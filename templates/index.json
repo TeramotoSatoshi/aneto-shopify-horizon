@@ -31,6 +31,7 @@
       "block_order": [
         "button_PQNBKG"
       ],
+      "disabled": true,
       "name": "t:names.hero_bottom_aligned",
       "settings": {
         "media_type_1": "image",
@@ -69,14 +70,14 @@
           "settings": {
             "media_type_1": "image",
             "image_1": "shopify://shop_images/TOP_PC_1_4227ac5a-25ef-4bac-b00c-f487124a5d2b.png",
-            "content_direction": "column",
+            "content_direction": "row",
             "vertical_on_mobile": true,
             "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "align_baseline": false,
+            "vertical_alignment": "flex-end",
+            "align_baseline": true,
             "horizontal_alignment_flex_direction_column": "center",
             "vertical_alignment_flex_direction_column": "center",
-            "gap": 12,
+            "gap": 21,
             "inherit_color_scheme": true,
             "color_scheme": "",
             "toggle_overlay": false,
@@ -205,7 +206,6 @@
         "slide_r84chE",
         "slide_fPFY83"
       ],
-      "disabled": true,
       "name": "ヒーロー",
       "settings": {
         "icons_style": "chevron",
