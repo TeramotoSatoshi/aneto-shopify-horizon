@@ -14,7 +14,6 @@
       "blocks": {
         "page-content": {
           "type": "page-content",
-          "disabled": true,
           "settings": {},
           "blocks": {}
         },
@@ -84,7 +83,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "{{ closest.page.content }}",
+                "text": "<h4>From Range to Town</h4><h6>自然の厳しさを凌ぐ機能が<br/>日常と山脈をシームレスに繋ぐ</h6>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
