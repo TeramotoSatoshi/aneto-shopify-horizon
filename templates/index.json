@@ -587,7 +587,7 @@
             "width_percentage": 100,
             "max_width": 2000,
             "height_type": "viewport",
-            "height_viewport": "75",
+            "height_viewport": "100",
             "height_pixels": 500,
             "height_percentage": 60,
             "mobile_width_type": "full",
