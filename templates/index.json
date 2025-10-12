@@ -15,7 +15,7 @@
         "ai_gen_block_cdcb3bc_PyAKmF": {
           "type": "ai_gen_block_cdcb3bc",
           "settings": {
-            "width_type": "100%",
+            "width_type": "custom",
             "custom_width": 100,
             "max_width_enabled": true,
             "max_width": 2000,
