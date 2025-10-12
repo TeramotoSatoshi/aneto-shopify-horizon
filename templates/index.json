@@ -17,7 +17,7 @@
           "settings": {
             "width_type": "custom",
             "custom_width": 100,
-            "max_width_enabled": true,
+            "max_width_enabled": false,
             "max_width": 2000,
             "border_radius": 0,
             "height_type_desktop": "viewport",
