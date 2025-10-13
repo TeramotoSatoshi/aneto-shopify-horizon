@@ -353,12 +353,27 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "swatches_CXGYKj": {
+              "type": "swatches",
+              "name": "t:names.swatches",
+              "settings": {
+                "product_swatches_alignment": "flex-start",
+                "product_swatches_alignment_mobile": "flex-start",
+                "hide_padding": false,
+                "product_swatches_padding_top": 4,
+                "product_swatches_padding_bottom": 0,
+                "product_swatches_padding_left": 0,
+                "product_swatches_padding_right": 0
+              },
+              "blocks": {}
             }
           },
           "block_order": [
             "product_card_gallery_WrfQcD",
             "product_title_xrdfNX",
-            "price_fWF9UP"
+            "price_fWF9UP",
+            "swatches_CXGYKj"
           ]
         }
       },
@@ -547,12 +562,27 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "swatches_QVXFa6": {
+              "type": "swatches",
+              "name": "t:names.swatches",
+              "settings": {
+                "product_swatches_alignment": "flex-start",
+                "product_swatches_alignment_mobile": "flex-start",
+                "hide_padding": false,
+                "product_swatches_padding_top": 4,
+                "product_swatches_padding_bottom": 0,
+                "product_swatches_padding_left": 0,
+                "product_swatches_padding_right": 0
+              },
+              "blocks": {}
             }
           },
           "block_order": [
             "product_card_gallery_677WP3",
             "product_title_YXxMTj",
-            "price_JQzVV4"
+            "price_JQzVV4",
+            "swatches_QVXFa6"
           ]
         }
       },
