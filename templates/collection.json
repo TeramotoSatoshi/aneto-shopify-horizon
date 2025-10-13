@@ -204,6 +204,20 @@
               },
               "blocks": {}
             },
+            "swatches_YJr7Jk": {
+              "type": "swatches",
+              "name": "t:names.swatches",
+              "settings": {
+                "product_swatches_alignment": "flex-start",
+                "product_swatches_alignment_mobile": "flex-start",
+                "hide_padding": false,
+                "product_swatches_padding_top": 4,
+                "product_swatches_padding_bottom": 0,
+                "product_swatches_padding_left": 0,
+                "product_swatches_padding_right": 0
+              },
+              "blocks": {}
+            },
             "custom_liquid_X7jzXp": {
               "type": "custom-liquid",
               "name": "t:names.custom_liquid",
@@ -217,6 +231,7 @@
             "card-gallery",
             "product_title_4nY4eT",
             "price_EzJzMm",
+            "swatches_YJr7Jk",
             "custom_liquid_X7jzXp"
           ]
         }
