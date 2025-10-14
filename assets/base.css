@@ -4286,8 +4286,8 @@ text-component {
 
 
 .sale-badge {
-  background-color: red;
-  color: #D81B60;
+  background-color: #D81B60;
+  color: #FFFFFF;
   padding: 5px 10px;
   border-radius: 4px;
   font-weight: bold;
