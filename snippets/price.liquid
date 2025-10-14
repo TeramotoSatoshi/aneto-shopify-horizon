@@ -76,4 +76,12 @@
     -%}
     {% render 'unit-price', price: unit_price, measurement: selected_variant.unit_price_measurement %}
   {%- endif -%}
+  
+
+
+  {%- if product.compare_at_price > product.price -%}
+  {%- assign discount = product.compare_at_price | minus: product.price -%}
+  {%- assign discount_percentage = discount | times: 100 | divided_by: product.compare_at_price -%}
+  <span class="sale-badge">SALE {{ discount_percentage }}%OFF</span>
+  {%- endif -%}
 </div>
