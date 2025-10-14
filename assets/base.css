@@ -4283,3 +4283,15 @@ text-component {
     font-size: max(1rem, 100%);
   }
 }
+
+
+.sale-badge {
+  background-color: red;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 0.875rem;
+  margin-left: 8px;
+}
