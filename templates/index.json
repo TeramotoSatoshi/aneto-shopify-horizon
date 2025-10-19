@@ -139,7 +139,7 @@
             "horizontal_alignment": "flex-start",
             "vertical_alignment": "center",
             "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "flex-start",
+            "horizontal_alignment_flex_direction_column": "center",
             "vertical_alignment_flex_direction_column": "center",
             "gap": 12,
             "width": "fill",
@@ -174,7 +174,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<h3>Shop by collection</h3>",
+                "text": "<h2>﻿SCENE & STYLE</h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -206,15 +206,15 @@
           "name": "t:names.collection_card",
           "static": true,
           "settings": {
-            "placement": "on_image",
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "flex-start",
-            "collection_card_gap": 8,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
+            "placement": "below_image",
+            "horizontal_alignment": "center",
+            "vertical_alignment": "flex-end",
+            "collection_card_gap": 0,
+            "inherit_color_scheme": false,
+            "color_scheme": "scheme-2",
+            "border": "solid",
+            "border_width": 10,
+            "border_opacity": 0,
             "border_radius": 0
           },
           "blocks": {
@@ -233,7 +233,7 @@
                 "case": "none",
                 "wrap": "pretty",
                 "color": "var(--color-foreground)",
-                "background": true,
+                "background": false,
                 "background_color": "#ffffff",
                 "corner_radius": 0,
                 "padding-block-start": 4,
@@ -248,7 +248,7 @@
               "name": "t:names.collection_card_image",
               "static": true,
               "settings": {
-                "image_ratio": "adapt",
+                "image_ratio": "square",
                 "toggle_overlay": false,
                 "overlay_color": "#00000026",
                 "overlay_style": "solid",
@@ -256,7 +256,7 @@
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
-                "border_radius": 0
+                "border_radius": 100
               },
               "blocks": {}
             }
@@ -271,7 +271,12 @@
       ],
       "name": "t:names.collections_grid",
       "settings": {
-        "collection_list": [],
+        "collection_list": [
+          "trekking",
+          "trail-running",
+          "winter-range",
+          "urban-field"
+        ],
         "layout_type": "grid",
         "carousel_on_mobile": true,
         "columns": 4,
