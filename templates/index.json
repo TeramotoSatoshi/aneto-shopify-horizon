@@ -225,7 +225,7 @@
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
-                "type_preset": "rte",
+                "type_preset": "h4",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
                 "line_height": "normal",
@@ -236,10 +236,10 @@
                 "background": false,
                 "background_color": "#ffffff",
                 "corner_radius": 0,
-                "padding-block-start": 4,
-                "padding-block-end": 4,
-                "padding-inline-start": 8,
-                "padding-inline-end": 8
+                "padding-block-start": 10,
+                "padding-block-end": 10,
+                "padding-inline-start": 3,
+                "padding-inline-end": 0
               },
               "blocks": {}
             },
