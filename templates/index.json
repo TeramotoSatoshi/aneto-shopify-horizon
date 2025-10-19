@@ -404,68 +404,6 @@
         "padding-block-end": 0
       }
     },
-    "section_f7TwJL": {
-      "type": "section",
-      "blocks": {
-        "text_EtexzW": {
-          "type": "text",
-          "name": "t:names.text",
-          "settings": {
-            "text": "<h4>From Range to Town</h4><p>自然の厳しさを凌ぐ機能で<br/>日常にも山脈にも互換性があるテックウェア</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "text_EtexzW"
-      ],
-      "name": "コンセプト",
-      "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 25,
-        "section_width": "page-width",
-        "section_height": "custom",
-        "section_height_custom": 23,
-        "color_scheme": "scheme-1",
-        "background_media": "none",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 48,
-        "padding-block-end": 48
-      }
-    },
     "product_list_iMG7DK": {
       "type": "product-list",
       "blocks": {
@@ -507,7 +445,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h2>2025 S/S NEW ARRIVALS</h2>",
+                "text": "<h2>NEW ARRIVALS</h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -671,6 +609,69 @@
         "horizontal_alignment": "flex-start",
         "gap": 28,
         "color_scheme": "scheme-1",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "section_f7TwJL": {
+      "type": "section",
+      "blocks": {
+        "text_EtexzW": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<h4>From Range to Town</h4><p>自然の厳しさを凌ぐ機能で<br/>日常にも山脈にも互換性があるテックウェア</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_EtexzW"
+      ],
+      "name": "コンセプト",
+      "settings": {
+        "content_direction": "row",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "center",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 10,
+        "section_width": "page-width",
+        "section_height": "custom",
+        "section_height_custom": 40,
+        "color_scheme": "scheme-6",
+        "background_media": "image",
+        "video_position": "cover",
+        "background_image": "shopify://shop_images/AdobeStock_1425449286.jpg",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
         "padding-block-start": 48,
         "padding-block-end": 48
       }
@@ -889,8 +890,8 @@
     "1760181146a2b96718",
     "collection_list_iik7FU",
     "blocks_g9GeUD",
-    "section_f7TwJL",
     "product_list_iMG7DK",
+    "section_f7TwJL",
     "product_list_fa6P9H"
   ]
 }
