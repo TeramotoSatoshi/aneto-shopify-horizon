@@ -81,16 +81,29 @@
   /* モバイル用のバッジサイズ調整 */
   @media screen and (max-width: 749px) {
     .product-badges__badge {
-      --badge-font-size: 0.7rem;
+      font-size: 0.65rem !important;
+      line-height: 1.2 !important;
     }
 
     .product-badges__badge--rectangle {
-      padding-block: 4px;
-      padding-inline: 8px;
+      padding-block: 3px !important;
+      padding-inline: 6px !important;
     }
 
     .product-badges {
-      --badge-inset: 6px;
+      --badge-inset: 4px;
+    }
+  }
+
+  /* さらに小さい画面用 */
+  @media screen and (max-width: 480px) {
+    .product-badges__badge {
+      font-size: 0.6rem !important;
+    }
+
+    .product-badges__badge--rectangle {
+      padding-block: 2px !important;
+      padding-inline: 5px !important;
     }
   }
 {% endstylesheet %}
