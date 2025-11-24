@@ -70,26 +70,27 @@
     font-weight: var(--badge-font-weight);
     text-transform: var(--badge-text-transform);
     border-radius: var(--badge-border-radius);
-    border-radius: 4px;  /* 小さい値 = 角丸が少ない */
+    border-radius: 4px;
   }
 
   .product-badges__badge--rectangle {
     padding-block: var(--badge-rectangle-padding-block);
     padding-inline: var(--badge-rectangle-padding-inline);
   }
+
+  /* モバイル用のバッジサイズ調整 */
+  @media screen and (max-width: 749px) {
+    .product-badges__badge {
+      --badge-font-size: 0.7rem;
+    }
+
+    .product-badges__badge--rectangle {
+      padding-block: 4px;
+      padding-inline: 8px;
+    }
+
+    .product-badges {
+      --badge-inset: 6px;
+    }
+  }
 {% endstylesheet %}
-/* モバイル用のバッジサイズ調整 */
-@media screen and (max-width: 749px) {
-  .product-badges__badge {
-    --badge-font-size: 0.7rem;  /* フォントサイズを小さく */
-  }
-
-  .product-badges__badge--rectangle {
-    padding-block: 4px;  /* 上下のパディングを小さく */
-    padding-inline: 8px;  /* 左右のパディングを小さく */
-  }
-
-  .product-badges {
-    --badge-inset: 6px;  /* バッジの位置調整 */
-  }
-}
