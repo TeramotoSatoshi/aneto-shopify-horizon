@@ -78,3 +78,18 @@
     padding-inline: var(--badge-rectangle-padding-inline);
   }
 {% endstylesheet %}
+/* モバイル用のバッジサイズ調整 */
+@media screen and (max-width: 749px) {
+  .product-badges__badge {
+    --badge-font-size: 0.7rem;  /* フォントサイズを小さく */
+  }
+
+  .product-badges__badge--rectangle {
+    padding-block: 4px;  /* 上下のパディングを小さく */
+    padding-inline: 8px;  /* 左右のパディングを小さく */
+  }
+
+  .product-badges {
+    --badge-inset: 6px;  /* バッジの位置調整 */
+  }
+}
