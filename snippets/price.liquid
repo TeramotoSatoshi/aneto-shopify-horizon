@@ -76,4 +76,13 @@
     -%}
     {% render 'unit-price', price: unit_price, measurement: selected_variant.unit_price_measurement %}
   {%- endif -%}
+  
+  {%- comment -%} 商品詳細ページでのみSALE%を表示 {%- endcomment -%}
+  {%- if product.handle == closest.product.handle -%}
+    {%- if selected_variant.compare_at_price > selected_variant.price -%}
+      {%- assign discount = selected_variant.compare_at_price | minus: selected_variant.price -%}
+      {%- assign discount_percentage = discount | times: 100.0 | divided_by: selected_variant.compare_at_price | round -%}
+      <span class="sale-badge">SALE{{ discount_percentage }}%</span>
+    {%- endif -%}
+  {%- endif -%}
 </div>
