@@ -1,6 +1,464 @@
+{% doc %}
+  @prompt
+    既存のコレクションカードとベースは同じセクションで画像のラウンド等を調整できるようにCSSを書いてほしい。
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-collection-card-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  @media screen and (min-width: 750px) {
+    .ai-collection-card-{{ ai_gen_id }} {
+      width: {{ block.settings.desktop_width_percent }}%;
+    }
+  }
+
+  .ai-collection-card-wrapper-{{ ai_gen_id }} {
+    position: relative;
+    overflow: hidden;
+    border-radius: {{ block.settings.image_border_radius }}px;
+    background-color: {{ block.settings.card_background_color }};
+  }
+
+  .ai-collection-card-image-container-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: {{ block.settings.image_border_radius }}px;
+  }
+
+  .ai-collection-card-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+
+  {% if block.settings.hover_effect == 'zoom' %}
+    .ai-collection-card-{{ ai_gen_id }}:hover .ai-collection-card-image-{{ ai_gen_id }} {
+      transform: scale(1.05);
+    }
+  {% endif %}
+
+  {% if block.settings.hover_effect == 'lift' %}
+    .ai-collection-card-wrapper-{{ ai_gen_id }} {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .ai-collection-card-{{ ai_gen_id }}:hover .ai-collection-card-wrapper-{{ ai_gen_id }} {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+  {% endif %}
+
+  .ai-collection-card-image-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .ai-collection-card-image-placeholder-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ai-collection-card-empty-state-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 20px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  {% if block.settings.image_aspect_ratio == 'square' %}
+    .ai-collection-card-image-container-{{ ai_gen_id }} {
+      aspect-ratio: 1 / 1;
+    }
+  {% elsif block.settings.image_aspect_ratio == 'portrait' %}
+    .ai-collection-card-image-container-{{ ai_gen_id }} {
+      aspect-ratio: 3 / 4;
+    }
+  {% elsif block.settings.image_aspect_ratio == 'landscape' %}
+    .ai-collection-card-image-container-{{ ai_gen_id }} {
+      aspect-ratio: 4 / 3;
+    }
+  {% elsif block.settings.image_aspect_ratio == 'wide' %}
+    .ai-collection-card-image-container-{{ ai_gen_id }} {
+      aspect-ratio: 16 / 9;
+    }
+  {% endif %}
+
+  .ai-collection-card-overlay-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, {{ block.settings.overlay_opacity | divided_by: 100.0 }}) 100%
+    );
+    display: flex;
+    flex-direction: column;
+    justify-content: {{ block.settings.content_position }};
+    align-items: center;
+    padding: {{ block.settings.content_padding }}px;
+    text-align: center;
+  }
+
+  .ai-collection-card-title-{{ ai_gen_id }} {
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.title_size }}px;
+    font-weight: 600;
+    margin: 0 0 8px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .ai-collection-card-description-{{ ai_gen_id }} {
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.description_size }}px;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .ai-collection-card-button-{{ ai_gen_id }} {
+    margin-top: 16px;
+    padding: 12px 24px;
+    background-color: {{ block.settings.button_background_color }};
+    color: {{ block.settings.button_text_color }};
+    border: none;
+    border-radius: {{ block.settings.button_border_radius }}px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+  }
+
+  .ai-collection-card-{{ ai_gen_id }}:hover .ai-collection-card-button-{{ ai_gen_id }} {
+    background-color: {{ block.settings.button_hover_color }};
+  }
+{% endstyle %}
+
+<a
+  href="{% if block.settings.collection %}{{ block.settings.collection.url }}{% else %}#{% endif %}"
+  class="ai-collection-card-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-collection-card-wrapper-{{ ai_gen_id }}">
+    <div class="ai-collection-card-image-container-{{ ai_gen_id }}">
+      {% if block.settings.collection and block.settings.collection.image %}
+        <img
+          src="{{ block.settings.collection.image | image_url: width: 1000 }}"
+          alt="{{ block.settings.collection.image.alt | escape }}"
+          loading="lazy"
+          width="{{ block.settings.collection.image.width }}"
+          height="{{ block.settings.collection.image.height }}"
+          class="ai-collection-card-image-{{ ai_gen_id }}"
+        >
+      {% elsif block.settings.custom_image %}
+        <img
+          src="{{ block.settings.custom_image | image_url: width: 1000 }}"
+          alt="{{ block.settings.custom_image.alt | escape }}"
+          loading="lazy"
+          width="{{ block.settings.custom_image.width }}"
+          height="{{ block.settings.custom_image.height }}"
+          class="ai-collection-card-image-{{ ai_gen_id }}"
+        >
+      {% else %}
+        <div class="ai-collection-card-image-placeholder-{{ ai_gen_id }}">
+          {{ 'collection-1' | placeholder_svg_tag }}
+          <div class="ai-collection-card-empty-state-{{ ai_gen_id }}">
+            コレクションまたは画像を選択してください
+          </div>
+        </div>
+      {% endif %}
+
+      {% if block.settings.show_overlay %}
+        <div class="ai-collection-card-overlay-{{ ai_gen_id }}">
+          {% if block.settings.title != blank %}
+            <h3 class="ai-collection-card-title-{{ ai_gen_id }}">
+              {{ block.settings.title }}
+            </h3>
+          {% elsif block.settings.collection %}
+            <h3 class="ai-collection-card-title-{{ ai_gen_id }}">
+              {{ block.settings.collection.title }}
+            </h3>
+          {% endif %}
+
+          {% if block.settings.description != blank %}
+            <p class="ai-collection-card-description-{{ ai_gen_id }}">
+              {{ block.settings.description }}
+            </p>
+          {% endif %}
+
+          {% if block.settings.show_button %}
+            <span class="ai-collection-card-button-{{ ai_gen_id }}">
+              {{ block.settings.button_text }}
+            </span>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</a>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Collection card",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Collection"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "image_picker",
+      "id": "custom_image",
+      "label": "Custom image",
+      "info": "Overrides collection image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Custom title",
+      "info": "Overrides collection title"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "header",
+      "content": "Image style"
+    },
+    {
+      "type": "select",
+      "id": "image_aspect_ratio",
+      "label": "Aspect ratio",
+      "options": [
+        {
+          "value": "natural",
+          "label": "Natural"
+        },
+        {
+          "value": "square",
+          "label": "Square (1:1)"
+        },
+        {
+          "value": "portrait",
+          "label": "Portrait (3:4)"
+        },
+        {
+          "value": "landscape",
+          "label": "Landscape (4:3)"
+        },
+        {
+          "value": "wide",
+          "label": "Wide (16:9)"
+        }
+      ],
+      "default": "square"
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "select",
+      "id": "hover_effect",
+      "label": "Hover effect",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "zoom",
+          "label": "Zoom"
+        },
+        {
+          "value": "lift",
+          "label": "Lift"
+        }
+      ],
+      "default": "zoom"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Overlay"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_overlay",
+      "label": "Show overlay",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 40
+    },
+    {
+      "type": "select",
+      "id": "content_position",
+      "label": "Content position",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Top"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Bottom"
+        }
+      ],
+      "default": "flex-end"
+    },
+    {
+      "type": "range",
+      "id": "content_padding",
+      "label": "Content padding",
+      "min": 10,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Title size",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "description_size",
+      "label": "Description size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_button",
+      "label": "Show button",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Shop now"
+    },
+    {
+      "type": "color",
+      "id": "button_background_color",
+      "label": "Button background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_color",
+      "label": "Button hover background",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "label": "Button border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Card style"
+    },
+    {
+      "type": "color",
+      "id": "card_background_color",
+      "label": "Card background",
+      "default": "#f5f5f5"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection card"
+    }
+  ],
+  "tag": null
+}
 {% endschema %}
