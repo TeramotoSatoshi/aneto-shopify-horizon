@@ -42,7 +42,7 @@
             "autoplay": true,
             "autoplay_speed": 4,
             "slide_1_desktop_image": "shopify://shop_images/TOP_PC_2_130166db-6979-4d03-a85a-4f7760636a7a.png",
-            "slide_1_mobile_image": "shopify://shop_images/TOP_SP_2_7431755c-1752-4566-b753-7fe4c5f4bb16.png",
+            "slide_1_mobile_image": "shopify://shop_images/TOP_SP_1_4e65930a-2256-4bcc-912e-87fa767807d9.png",
             "slide_1_title": "",
             "slide_1_subtitle": "",
             "slide_1_text_vertical_position": "bottom",
@@ -62,7 +62,7 @@
             "slide_2_button_vertical_position": "bottom",
             "slide_2_button_horizontal_position": "left",
             "slide_3_desktop_image": "shopify://shop_images/TOP_PC_1_ac93a19e-a8d1-4e55-add6-1b19917efedf.png",
-            "slide_3_mobile_image": "shopify://shop_images/TOP_SP_1_7b39018e-211a-4529-b675-52ee3a228dca.png",
+            "slide_3_mobile_image": "shopify://shop_images/TOP_SP_2_47b464f6-6b17-4bd2-bd8d-71f152ac40ca.png",
             "slide_3_title": "",
             "slide_3_subtitle": "",
             "slide_3_text_vertical_position": "bottom",
@@ -82,7 +82,7 @@
             "slide_4_button_vertical_position": "bottom",
             "slide_4_button_horizontal_position": "left",
             "slide_5_desktop_image": "shopify://shop_images/TOP_PC_6.png",
-            "slide_5_mobile_image": "shopify://shop_images/TOP_SP_6.png",
+            "slide_5_mobile_image": "shopify://shop_images/TOP_SP_3_e6ef136f-3a10-4c66-bd6b-844db1d95883.png",
             "slide_5_title": "",
             "slide_5_subtitle": "",
             "slide_5_text_vertical_position": "bottom",
@@ -441,6 +441,28 @@
             "padding-inline-end": 0
           },
           "blocks": {
+            "ai_gen_block_e1024ba_4i7wLx": {
+              "type": "ai_gen_block_e1024ba",
+              "settings": {
+                "collection": "",
+                "custom_title": "",
+                "image_aspect_ratio": "16/9",
+                "border_radius": 0,
+                "font_size": 48,
+                "font_weight": "700",
+                "text_color": "#ffffff",
+                "text_align": "center",
+                "text_shadow": true,
+                "vertical_alignment": "center",
+                "horizontal_alignment": "center",
+                "overlay_padding": 40,
+                "background_overlay": false,
+                "background_color": "#000000",
+                "text_padding": 20,
+                "text_border_radius": 8
+              },
+              "blocks": {}
+            },
             "text_mWRXbV": {
               "type": "text",
               "name": "t:names.heading",
@@ -483,6 +505,7 @@
             }
           },
           "block_order": [
+            "ai_gen_block_e1024ba_4i7wLx",
             "text_mWRXbV",
             "product_list_button_ymAMdF"
           ]
