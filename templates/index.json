@@ -444,48 +444,23 @@
             "ai_gen_block_e1024ba_4i7wLx": {
               "type": "ai_gen_block_e1024ba",
               "settings": {
-                "collection": "",
-                "custom_title": "",
+                "collection": "all-product-1",
+                "custom_image": "shopify://shop_images/A3A7233_3.png",
+                "custom_title": "NEW ARRIVALS",
                 "image_aspect_ratio": "16/9",
                 "border_radius": 0,
-                "font_size": 48,
+                "font_size": 38,
                 "font_weight": "700",
                 "text_color": "#ffffff",
                 "text_align": "center",
                 "text_shadow": true,
                 "vertical_alignment": "center",
                 "horizontal_alignment": "center",
-                "overlay_padding": 40,
+                "overlay_padding": 70,
                 "background_overlay": false,
                 "background_color": "#000000",
                 "text_padding": 20,
                 "text_border_radius": 8
-              },
-              "blocks": {}
-            },
-            "text_mWRXbV": {
-              "type": "text",
-              "name": "t:names.heading",
-              "settings": {
-                "text": "<h2>NEW ARRIVALS</h2>",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "h4",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 20,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
               },
               "blocks": {}
             },
@@ -506,7 +481,6 @@
           },
           "block_order": [
             "ai_gen_block_e1024ba_4i7wLx",
-            "text_mWRXbV",
             "product_list_button_ymAMdF"
           ]
         },
