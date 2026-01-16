@@ -41,7 +41,7 @@
             "dot_active_color": "rgba(0,0,0,0)",
             "autoplay": true,
             "autoplay_speed": 4,
-            "slide_1_desktop_image": "shopify://shop_images/TOP_PC_2_130166db-6979-4d03-a85a-4f7760636a7a.png",
+            "slide_1_desktop_image": "shopify://shop_images/TOP_PC_1_8e05cd7e-cd42-4525-8943-8eaf8eef1432.png",
             "slide_1_mobile_image": "shopify://shop_images/TOP_SP_1_4e65930a-2256-4bcc-912e-87fa767807d9.png",
             "slide_1_title": "",
             "slide_1_subtitle": "",
@@ -51,7 +51,7 @@
             "slide_1_button_link": "",
             "slide_1_button_vertical_position": "bottom",
             "slide_1_button_horizontal_position": "left",
-            "slide_2_desktop_image": "shopify://shop_images/TOP_PC_1_bf0a43df-e503-43c0-9d34-9f3809bde6f0.png",
+            "slide_2_desktop_image": "shopify://shop_images/TOP_PC_1-1.png",
             "slide_2_mobile_image": "shopify://shop_images/TOP_SP_1_9aa109c4-68ef-4665-9d28-73f216bf4190.png",
             "slide_2_title": "",
             "slide_2_subtitle": "",
@@ -61,7 +61,7 @@
             "slide_2_button_link": "",
             "slide_2_button_vertical_position": "bottom",
             "slide_2_button_horizontal_position": "left",
-            "slide_3_desktop_image": "shopify://shop_images/TOP_PC_1_ac93a19e-a8d1-4e55-add6-1b19917efedf.png",
+            "slide_3_desktop_image": "shopify://shop_images/TOP_PC_2_c803b7da-4e15-478f-b5b0-36d2da4131b0.png",
             "slide_3_mobile_image": "shopify://shop_images/TOP_SP_2_47b464f6-6b17-4bd2-bd8d-71f152ac40ca.png",
             "slide_3_title": "",
             "slide_3_subtitle": "",
@@ -71,7 +71,7 @@
             "slide_3_button_link": "",
             "slide_3_button_vertical_position": "bottom",
             "slide_3_button_horizontal_position": "left",
-            "slide_4_desktop_image": "shopify://shop_images/TOP_PC_4_5c38bef3-00d3-457d-9346-7ba607c0d2e2.png",
+            "slide_4_desktop_image": "shopify://shop_images/TOP_PC_2-1_b083432b-51dd-43d4-b18c-64c39ab193ef.png",
             "slide_4_mobile_image": "shopify://shop_images/TOP_SP_2_00d03c69-45e4-4af6-a253-dcaf2a19c80d.png",
             "slide_4_title": "",
             "slide_4_subtitle": "",
@@ -81,7 +81,7 @@
             "slide_4_button_link": "",
             "slide_4_button_vertical_position": "bottom",
             "slide_4_button_horizontal_position": "left",
-            "slide_5_desktop_image": "shopify://shop_images/TOP_PC_6.png",
+            "slide_5_desktop_image": "shopify://shop_images/TOP_PC_3_d3b083d1-96e1-4045-ae01-60ab41c9f27f.png",
             "slide_5_mobile_image": "shopify://shop_images/TOP_SP_3_e6ef136f-3a10-4c66-bd6b-844db1d95883.png",
             "slide_5_title": "",
             "slide_5_subtitle": "",
@@ -279,7 +279,7 @@
         ],
         "layout_type": "grid",
         "carousel_on_mobile": true,
-        "columns": 4,
+        "columns": 6,
         "mobile_columns": "2",
         "mobile_card_size": "44cqw",
         "columns_gap": 8,
@@ -291,8 +291,8 @@
         "section_width": "page-width",
         "gap": 12,
         "color_scheme": "",
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "padding-block-start": 20,
+        "padding-block-end": 20
       }
     },
     "blocks_g9GeUD": {
@@ -633,8 +633,8 @@
         "collection": "all-product-1",
         "layout_type": "grid",
         "carousel_on_mobile": false,
-        "max_products": 4,
-        "columns": 4,
+        "max_products": 6,
+        "columns": 6,
         "mobile_columns": "2",
         "mobile_card_size": "60cqw",
         "columns_gap": 8,
@@ -645,8 +645,8 @@
         "horizontal_alignment": "flex-start",
         "gap": 28,
         "color_scheme": "scheme-1",
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "padding-block-start": 20,
+        "padding-block-end": 20
       }
     },
     "product_list_fa6P9H": {
@@ -847,8 +847,8 @@
         "horizontal_alignment": "flex-start",
         "gap": 28,
         "color_scheme": "scheme-1",
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "padding-block-start": 20,
+        "padding-block-end": 20
       }
     },
     "17682050588e40ea8a": {
