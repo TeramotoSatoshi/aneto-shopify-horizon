@@ -221,6 +221,32 @@
               },
               "block_order": []
             },
+            "text_aEtTtq": {
+              "type": "text",
+              "name": "Product description",
+              "settings": {
+                "text": "{{ closest.product.description }}",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-primary--family)",
+                "font_size": "",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
             "accordion_re9LXC": {
               "type": "accordion",
               "name": "t:names.accordion",
@@ -243,7 +269,7 @@
                 "accordion_row_C6U6HW": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "Return policy",
+                    "heading": "返金ポリシー",
                     "open_by_default": true,
                     "icon": "none",
                     "width": 20
@@ -252,7 +278,7 @@
                     "text_nWQdfC": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Our goal is for every customer to be totally satisfied with their purchase. If this isn't the case, let us know and we'll do our best to work with you to make it right.</p>",
+                        "text": "<p><strong>・生産数の観点から、申込数が一定枚数に至らない場合、大変恐縮ですが注文と決済をキャンセルさせていただくことがございます。<br/><br/>・商品購入完了後の返品・交換・キャンセル等はお受けいたしかねます。</strong></p><p><strong>・商品が不良で、商品到着から7日以内にその旨ご連絡いただいた場合のみ、良品と交換いたします。ただし、以下の場合を除きます。</strong></p><p><strong>1/ご使用になられた形跡がみられる商品</strong></p><p><strong>2/お客様のもとで、キズや汚れが生じた商品</strong></p><p><strong>3/その他、商品紹介ページに返品できない旨が明記されている商品</strong></p><p><strong>・返品送料 不良品の場合、送料は弊社が負担いたします。<br/>それ以外はお客様のご負担となります。</strong></p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
@@ -282,7 +308,7 @@
                 "accordion_row_7yar3k": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "Shipping",
+                    "heading": "配送について",
                     "open_by_default": false,
                     "icon": "none",
                     "width": 20
@@ -291,7 +317,7 @@
                     "text_ygAzUi": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>We will work quickly to ship your order as soon as possible. Once your order has shipped, you will receive an email with further information. Delivery times vary depending on your location.</p>",
+                        "text": "<p>ご注文完了後３営業日以内に在庫の確認を行い、お客様のメールアドレス宛に在庫の有無と販売可否をお伝えいたします。<br/>在庫がある場合：ご注文完了時から15営業日以内に発送を行います。<br/>在庫がない場合：ご注文をキャンセルさせていただき、自動的に決済もキャンセルとなります。その際手数料等は発生いたしません。</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
@@ -317,78 +343,12 @@
                   "block_order": [
                     "text_ygAzUi"
                   ]
-                },
-                "accordion_row_FfmFzh": {
-                  "type": "_accordion-row",
-                  "settings": {
-                    "heading": "Manufacturing",
-                    "open_by_default": false,
-                    "icon": "none",
-                    "width": 20
-                  },
-                  "blocks": {
-                    "text_yg9npH": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>Our products are manufactured both locally and globally. We carefully select our manufacturing partners to ensure our products are high quality and a fair value.</p>",
-                        "width": "100%",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "h5",
-                        "font": "var(--font-body--family)",
-                        "font_size": "1rem",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "color": "var(--color-foreground)",
-                        "background": false,
-                        "background_color": "#00000026",
-                        "corner_radius": 0,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "text_yg9npH"
-                  ]
                 }
               },
               "block_order": [
                 "accordion_row_C6U6HW",
-                "accordion_row_7yar3k",
-                "accordion_row_FfmFzh"
+                "accordion_row_7yar3k"
               ]
-            },
-            "text_aEtTtq": {
-              "type": "text",
-              "name": "Product description",
-              "settings": {
-                "text": "{{ closest.product.description }}",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-primary--family)",
-                "font_size": "",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
             }
           },
           "block_order": [
@@ -396,8 +356,8 @@
             "divider_VJhene",
             "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
-            "accordion_re9LXC",
-            "text_aEtTtq"
+            "text_aEtTtq",
+            "accordion_re9LXC"
           ]
         }
       },
