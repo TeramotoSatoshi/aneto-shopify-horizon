@@ -407,6 +407,21 @@
     "product_list_iMG7DK": {
       "type": "product-list",
       "blocks": {
+        "button_4GwpDK": {
+          "type": "button",
+          "name": "t:names.button",
+          "settings": {
+            "label": "View All",
+            "link": "shopify://collections/all-product-1",
+            "open_in_new_tab": false,
+            "style_class": "button-secondary",
+            "width": "custom",
+            "custom_width": 100,
+            "width_mobile": "custom",
+            "custom_width_mobile": 100
+          },
+          "blocks": {}
+        },
         "static-header": {
           "type": "_product-list-content",
           "name": "t:names.header",
@@ -628,6 +643,9 @@
           ]
         }
       },
+      "block_order": [
+        "button_4GwpDK"
+      ],
       "name": "新着アイテム",
       "settings": {
         "collection": "all-product-1",
@@ -652,6 +670,21 @@
     "product_list_fa6P9H": {
       "type": "product-list",
       "blocks": {
+        "button_8KKKLq": {
+          "type": "button",
+          "name": "t:names.button",
+          "settings": {
+            "label": "View All",
+            "link": "shopify://collections/all",
+            "open_in_new_tab": false,
+            "style_class": "button-secondary",
+            "width": "custom",
+            "custom_width": 100,
+            "width_mobile": "custom",
+            "custom_width_mobile": 100
+          },
+          "blocks": {}
+        },
         "static-header": {
           "type": "_product-list-content",
           "name": "t:names.header",
@@ -699,7 +732,7 @@
                 "mobile_title_size": 32,
                 "text_color": "#ffffff",
                 "button_text": "View All",
-                "button_link": "",
+                "button_link": "shopify://collections/all",
                 "button_font_size": 13,
                 "mobile_button_font_size": 12,
                 "button_padding_vertical": 8,
@@ -830,6 +863,9 @@
           ]
         }
       },
+      "block_order": [
+        "button_8KKKLq"
+      ],
       "name": "全てのアイテム",
       "settings": {
         "collection": "all",
