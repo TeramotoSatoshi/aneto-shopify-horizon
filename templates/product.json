@@ -229,7 +229,7 @@
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
-                "type_preset": "rte",
+                "type_preset": "h5",
                 "font": "var(--font-primary--family)",
                 "font_size": "",
                 "line_height": "normal",
