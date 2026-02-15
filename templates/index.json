@@ -299,10 +299,9 @@
       "name": "t:names.collections_grid",
       "settings": {
         "collection_list": [
-          "trekking",
-          "trail-running",
-          "winter-range",
-          "urban-field"
+          "speak",
+          "grund",
+          "sway"
         ],
         "layout_type": "grid",
         "carousel_on_mobile": true,
