@@ -174,7 +174,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<h2> Label</h2>",
+                "text": "<h1> LABEL</h1>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
