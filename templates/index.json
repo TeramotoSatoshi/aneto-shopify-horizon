@@ -174,7 +174,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<h2>﻿SCENE & STYLE</h2>",
+                "text": "<h2> Label</h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -190,7 +190,7 @@
                 "background_color": "#00000026",
                 "corner_radius": 0,
                 "padding-block-start": 0,
-                "padding-block-end": 16,
+                "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
@@ -200,7 +200,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<p>行動範囲やシーン</p>",
+                "text": "<h6>行動量やシーンに応じた製品レーベル</h6>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
