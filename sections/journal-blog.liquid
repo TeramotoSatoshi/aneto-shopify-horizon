@@ -1,0 +1,112 @@
+{{ 'journal.css' | asset_url | stylesheet_tag }}
+
+<div class="journal">
+  {%- comment -%} Header {%- endcomment -%}
+  <div class="journal__header">
+    <h1 class="journal__title">Journal</h1>
+  </div>
+
+  {%- comment -%} Category Filter {%- endcomment -%}
+  <nav>
+    <ul class="journal__categories">
+      <li>
+        <a
+          href="{{ blog.url }}"
+          class="journal__category-link is-active"
+          data-journal-category="all"
+        >
+          All
+        </a>
+      </li>
+      {%- for tag in blog.all_tags -%}
+        <li>
+          <a
+            href="{{ blog.url }}/tagged/{{ tag | handle }}"
+            class="journal__category-link"
+            data-journal-category="{{ tag | handle }}"
+          >
+            {{ tag }}
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </nav>
+
+  {%- comment -%} Article Grid {%- endcomment -%}
+  {%- paginate blog.articles by section.settings.articles_per_page -%}
+    <div class="journal__grid">
+      {%- for article in blog.articles -%}
+        <a
+          href="{{ article.url }}"
+          class="journal__card{% if forloop.first and paginate.current_page == 1 %} journal__card--featured{% endif %}"
+          data-journal-card
+          data-tags="{% for tag in article.tags %}{{ tag | handle }}{% unless forloop.last %},{% endunless %}{% endfor %}"
+        >
+          {%- if article.image -%}
+            <div class="journal__card-image-wrapper">
+              {{
+                article.image
+                | image_url: width: 960
+                | image_tag:
+                  loading: 'lazy',
+                  sizes: '(min-width: 1000px) 380px, (min-width: 600px) 50vw, 100vw',
+                  widths: '350,480,720,960'
+              }}
+              {%- if article.tags.size > 0 -%}
+                <span class="journal__card-tag">{{ article.tags | first }}</span>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+          <div class="journal__card-body">
+            <h2 class="journal__card-title">{{ article.title }}</h2>
+            <time class="journal__card-date" datetime="{{ article.published_at | date: '%Y-%m-%d' }}">
+              {{ article.published_at | date: '%Y.%m.%d' }}
+            </time>
+          </div>
+        </a>
+      {%- else -%}
+        <p class="journal__no-results">記事が見つかりませんでした。</p>
+      {%- endfor -%}
+    </div>
+
+    {%- if paginate.pages > 1 -%}
+      <div class="journal__load-more">
+        {%- if paginate.next -%}
+          <a href="{{ paginate.next.url }}" class="journal__load-more-btn">
+            Load More
+          </a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  {%- endpaginate -%}
+</div>
+
+<script src="{{ 'journal.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Journal Blog",
+  "settings": [
+    {
+      "type": "range",
+      "id": "articles_per_page",
+      "label": "Articles per page",
+      "min": 6,
+      "max": 24,
+      "step": 3,
+      "default": 12
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Journal Blog"
+    }
+  ]
+}
+{% endschema %}

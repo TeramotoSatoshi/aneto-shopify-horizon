@@ -10,9 +10,8 @@
 {
   "sections": {
     "main": {
-      "type": "journal-blog",
+      "type": "journal-article",
       "settings": {
-        "articles_per_page": 12,
         "color_scheme": "scheme-1"
       }
     }
